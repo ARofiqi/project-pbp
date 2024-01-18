@@ -49,3 +49,15 @@ INSERT INTO matakuliah (kode_matakuliah, nama_matakuliah, jumlah_sks) VALUES
 ('MK303', 'Sistem Operasi', 3),
 ('MK404', 'Jaringan Komputer', 4),
 ('MK505', 'Algoritma dan Struktur Data', 3);
+
+penetesan JWT token :
+buat request baru di thunder client
+masuk ke route POST /login
+masuk ke body>form encode 
+masukan username = admin, dan password admin
+maka akan muncul tokennya
+salin tokennya lalu
+masuk ke route GET /admin
+dan masuk ke tab header
+tambahkan Autorization dan valuenya token tersebut
+selesai
