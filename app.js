@@ -4,7 +4,7 @@ const PORT = 8000;
 const db = require("./src/connection/db");
 const bodyParser = require("body-parser");
 const adminAuth = require("./src/middleware/admin");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const mahasiswaRoute = require("./src/controllers/mahasiswa.route");
 const dosenRoute = require("./src/controllers/dosen.route");
 const matakuliahRoute = require("./src/controllers/matakuliah.route");
+
 app.use("/mahasiswa", mahasiswaRoute);
 app.use("/dosen", dosenRoute);
 app.use("/matakuliah", matakuliahRoute);
@@ -32,11 +33,13 @@ app.get("/admin", adminAuth, (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  // Proses autentikasi pengguna, jika berhasil, lakukan langkah berikut:
-  const user = { id: 1, username: "john.doe" };
-
-  const token = jwt.sign(user, "secret-key");
-  res.json({ token });
+  const { username, password } = req.body;
+  const user = { username: "admin", password: "admin" };
+  if (username === user.username && password === user.password) {
+    const token = jwt.sign(user, "secret-key");
+    res.json({ token });
+  }
+  res.json({ message: "kamu tidak dapat akses" });
 });
 
 app.listen(PORT, () => {
