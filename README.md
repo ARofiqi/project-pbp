@@ -1,6 +1,6 @@
 Project PBP
 
-CREATE DATABASE IF NOT EXISTS db_kampus;
+CREATE DATABASE IF NOT EXISTS db_mahasiswa;
 
 jangan lupa port di db connection disesuaikan
 
