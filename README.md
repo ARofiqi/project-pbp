@@ -26,7 +26,6 @@ CREATE TABLE IF NOT EXISTS matakuliah (
   jumlah_sks INT
 );
 
-
 Mengisi table dengan data:
 
 INSERT INTO mahasiswa (nim, nama, jurusan, semester) VALUES

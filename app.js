@@ -13,17 +13,25 @@ const mahasiswaRoute = require("./src/controllers/mahasiswa.route");
 const dosenRoute = require("./src/controllers/dosen.route");
 const matakuliahRoute = require("./src/controllers/matakuliah.route");
 
-app.use("/mahasiswa", mahasiswaRoute);
-app.use("/dosen", dosenRoute);
-app.use("/matakuliah", matakuliahRoute);
+app.use("/api/mahasiswa", mahasiswaRoute);
+app.use("/api/dosen", dosenRoute);
+app.use("/api/matakuliah", matakuliahRoute);
 
 app.get("/", (req, res) => {
   res.json({
     autor: "Code dibuat oleh Ahmad Rofiqi",
     path: {
-      mahasiswa: ["GET /mahasiswa", "GET /mahasiswa/nama", "GET /mahasiswa/jurusan/:jurusan", "GET /mahasiswa/semester/:semester", "GET /mahasiswa/nim/:nim", "POST /mahasiswa", "DELETE /mahasiswa/:nim"],
-      dosen: ["GET /dosen", "GET /dosen/nama", "GET /dosen/matakuliah/:matakuliah", "PUT /:nidn", "POST /dosen", "DELETE /:nidn"],
-      matakuliah: ["GET /matakuliah", "GET /matakuliah/nama_matakuliah", "GET /matakuliah/kode_matakuliah/:kode_matakuliah", "GET /matakuliah/nidn/:nidn", "PUT /:nidn", "POST /matakuliah", "DELETE /:nidn"],
+      mahasiswa: ["GET /api/mahasiswa", "GET /api/mahasiswa/nama", "GET /api/mahasiswa/jurusan/:jurusan", "GET /api/mahasiswa/semester/:semester", "GET /api/mahasiswa/nim/:nim", "PUT /api/:nim", "POST /api/mahasiswa", "DELETE /api/mahasiswa/:nim"],
+      dosen: ["GET /api/dosen", "GET /api/dosen/nama", "GET /api/dosen/matakuliah/:matakuliah", "PUT /api/dosen/:nidn", "POST /api/dosen", "DELETE /api/dosen/:nidn"],
+      matakuliah: [
+        "GET /api/matakuliah",
+        "GET /api/matakuliah/nama_matakuliah",
+        "GET /api/matakuliah/kode_matakuliah/:kode_matakuliah",
+        "GET /api/matakuliah/nidn/:nidn",
+        "PUT /api/matakuliah/:nidn",
+        "POST /api/matakuliah",
+        "DELETE /api/matakuliah/:nidn",
+      ],
     },
   });
 });
